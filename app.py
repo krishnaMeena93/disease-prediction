@@ -6,6 +6,47 @@ import matplotlib.pyplot as plt
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
 
+# ---------------- UI STYLING ----------------
+st.markdown("""
+    <style>
+    .stApp {
+        background: linear-gradient(to right, #e0f7fa, #e8f5e9);
+    }
+
+    h1 {
+        color: #2c3e50;
+    }
+
+    .stButton>button {
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 10px;
+        height: 3em;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .stTextInput>div>div>input {
+        border-radius: 10px;
+    }
+
+    .stSelectbox>div>div {
+        border-radius: 10px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# ---------------- HEADER ----------------
+st.markdown("""
+    <div style='background-color:#4CAF50;padding:15px;border-radius:10px'>
+        <h1 style='color:white;text-align:center;'>
+        🏥 Health Risk Prediction System
+        </h1>
+    </div>
+""", unsafe_allow_html=True)
+
+st.write("This app predicts health risk based on lifestyle and symptoms using Machine Learning.")
+
 # ---------------- DATASET ----------------
 data = pd.DataFrame({
     "Age":[45,30,50,25,40,35,60,55,20,70],
@@ -30,11 +71,7 @@ model.fit(X, y)
 y_pred = model.predict(X)
 accuracy = accuracy_score(y, y_pred)
 
-# ---------------- UI ----------------
-st.markdown("<h1 style='text-align:center;'>🏥 Health Risk Prediction System</h1>", unsafe_allow_html=True)
-
-st.write("This app predicts health risk based on lifestyle and symptoms using Machine Learning.")
-
+# ---------------- INPUTS ----------------
 st.subheader("👤 Enter Patient Details")
 
 name = st.text_input("Enter your name")
